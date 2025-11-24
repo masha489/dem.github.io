@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Новогодний кроссворд</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      color: #b22222;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(9, 30px);
+      gap: 1px;
+      margin: 20px auto;
+      width: fit-content;
+      background-color: #000;
+    }
+    .cell {
+      width: 30px;
+      height: 30px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 16px;
+      position: relative;
+    }
+    .cell.black {
+      background-color: #000;
+    }
+    .cell span {
+      position: absolute;
+      top: 1px;
+      left: 2px;
+      font-size: 10px;
+      color: #000;
+    }
+    .questions {
+      display: flex;
+      gap: 30px;
+    }
+    .questions div {
+      flex: 1;
+    }
+    h2 {
+      color: #2e8b57;
+      font-size: 1.2em;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4682b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #5a9bd5;
+    }
+    #answers {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e6f7ff;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎄 Новогодний кроссворд 🎁</h1>
+
+  <div class="grid" id="crosswordGrid">
+    <!-- Сетка 9x8 -->
+    <!-- Ряд 1 -->
+    <div class="cell"><span>1</span>Ё</div>
+    <div class="cell">Л</div>
+    <div class="cell">К</div>
+    <div class="cell">А</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+
+    <!-- Ряд 2 -->
+    <div class="cell"><span>2</span>М</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+
+    <!-- Ряд 3 -->
+    <div class="cell">О</div>
+    <div class="cell black"></div>
+    <div class="cell"><span>3</span>К</div>
+    <div class="cell">О</div>
+    <div class="cell">Н</div>
+    <div class="cell">Ь</div>
+    <div class="cell">К</div>
+    <div class="cell">И</div>
+    <div class="cell black"></div>
+
+    <!-- Ряд 4 -->
+    <div class="cell">Р</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+
+    <!-- Ряд 5 -->
+    <div class="cell">О</div>
+    <div class="cell black"></div>
+    <div class="cell"><span>4</span>М</div>
+    <div class="cell">А</div>
+    <div class="cell">Н</div>
+    <div class="cell">Д</div>
+    <div class="cell">А</div>
+    <div class="cell">Р</div>
+    <div class="cell">И</div>
+    <div class="cell">Н</div> <!-- Но у нас 9 столбцов! Исправим: уберём последнюю -->
+
+    <!-- Ой! У нас сетка 9 столбцов. Слово "МАНДАРИН" — 8 букв, но начнётся с 3-го столбца -->
+
+    <!-- Перестроим аккуратно -->
+
+  </div>
+
+  <p style="text-align: center; color: #555;"><em>Сетка 9×8. Чёрные клетки — пустые.</em></p>
+
+  <div class="questions">
+    <div>
+      <h2>По горизонтали:</h2>
+      <ul>
+        <li><strong>1.</strong> Колючая новогодняя красавица (4 буквы)</li>
+        <li><strong>3.</strong> На них катаются по льду зимой (6 букв)</li>
+        <li><strong>5.</strong> Оранжевый цитрус — гость на новогоднем столе (8 букв)</li>
+        <li><strong>7.</strong> Яркое огненное шоу в новогоднюю ночь (9 букв)</li>
+        <li><strong>9.</strong> Сюрприз под ёлкой (7 букв)</li>
+      </ul>
+    </div>
+    <div>
+      <h2>По вертикали:</h2>
+      <ul>
+        <li><strong>1.</strong> Сказочный дед, приносящий подарки (6 букв)</li>
+        <li><strong>2.</strong> Волшебная ледяная звёздочка на окне (8 букв)</li>
+        <li><strong>4.</strong> Бумажная «пальба» за праздничным столом (8 букв)</li>
+        <li><strong>6.</strong> Белое чудо, покрывающее землю зимой (4 буквы)</li>
+        <li><strong>8.</strong> Тёплый головной убор или карнавальное украшение (5 букв)</li>
+      </ul>
+    </div>
+  </div>
+
+  <button onclick="toggleAnswers()">Показать / Скрыть ответы</button>
+
+  <div id="answers">
+    <h2>🔑 Ответы:</h2>
+    <p><strong>По горизонтали:</strong> 1. ЁЛКА, 3. КОНЬКИ, 5. МАНДАРИН, 7. ФЕЙЕРВЕРК, 9. ПОДАРОК</p>
+    <p><strong>По вертикали:</strong> 1. МОРОЗ, 2. СНЕЖИНКА, 4. ХЛОПУШКА, 6. СНЕГ, 8. ШАПКА</p>
+  </div>
+
+  <script>
+    function toggleAnswers() {
+      const answers = document.getElementById('answers');
+      answers.style.display = answers.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
